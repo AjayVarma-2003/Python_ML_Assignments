@@ -1,4 +1,2 @@
-Ajay Varma	87
-Hui Hui	74
-Shakira	76
-Buri Buri	69
+Ajay Varma = 87 
+Akshay Varma = 70 

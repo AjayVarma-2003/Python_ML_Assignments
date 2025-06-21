@@ -6,8 +6,8 @@ def FilterFile(Filename):
 
     for i in data:
         list1 = i.split(" ")
-        if((i) >= 75):
-            Result.append(str(i))
+        if(int(list1[3]) >= 75):
+            Result.append(i)
 
     return Result
 
@@ -17,13 +17,14 @@ def CreateFile(Filename, Size):
     print("Enter the data of students : ")
 
     for i in range(Size):
-        print("Enter name of Student : ")
+        print("Enter name of Student (Name Sirname): ")
         name = input()
-        fobj.write(name + "\t")
+        fobj.write(name + " = ")
 
         print("Enter the marks of Student : ")
         marks = int(input())
-        fobj.write(str(marks) + "\n")
+        fobj.write(str(marks))
+        fobj.write(" "+"\n")
 
     fobj.close()
     
