@@ -1,0 +1,3 @@
+Deleted files are : 
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_20\Demo\a.txt
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_20\Demo\b.txt
