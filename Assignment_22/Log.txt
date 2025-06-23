@@ -1,0 +1,7 @@
+Deleted files are : 
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_22\Demo\a.txt
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_22\Demo\Aaj Ki Raat - Stree 2 320 Kbps.mp3
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_22\Demo\b.txt
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_22\Demo\draw-3583548_1280.webp
+C:\Users\admin\Desktop\Python_Marvellous\Assignments\Assignment_22\Demo\videoplayback.mp4
+Number of duplicate files which are delted are : 5

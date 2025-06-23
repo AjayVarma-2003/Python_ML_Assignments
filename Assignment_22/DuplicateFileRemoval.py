@@ -25,6 +25,7 @@ def CalculateCheckSum(File):
 
 def DirectoryTravel(DirectoryName):
     Duplicate = {}
+    Count = 0
 
     flag = os.path.isabs(DirectoryName)
     if(flag == False):
@@ -40,6 +41,7 @@ def DirectoryTravel(DirectoryName):
 
     for FolderName, SubFolders, FileNames in os.walk(DirectoryName):
         for File in FileNames:
+            Count += 1
             fname = os.path.join(FolderName, File)
 
             ret = CalculateCheckSum(fname)
@@ -49,7 +51,7 @@ def DirectoryTravel(DirectoryName):
             else:
                 Duplicate[ret] = [fname]
 
-    return Duplicate
+    return Duplicate, Count
 
 def SendMail(File, Cnt, count):
     start_time = time.ctime()
@@ -84,29 +86,10 @@ def SendMail(File, Cnt, count):
     except Exception as eboj:
         print(f"Error sending in sending email : {eboj}")
 
-def CreateFile(value, cnt, count):
-    if not os.path.exists("Marvellous"):
-        os.mkdir("Marvellous")
-
-    fobj = open("Log.txt", "w")
-    
-    fobj.write("Number of duplicate files which are delted are : " + str(cnt) + "\n")
-    fobj.write("Deleted files are : " + "\n")
-    
-    for i in value:
-        fobj.write(str(i) + "\n")
-
-    fobj.close()
-
-    fname = os.path.join("Marvellous", "Log.txt")
-
-    return fname, count
 
 def DeleteDuplicate(path):
-    ret = ""
-    count1 = 0
 
-    Mydict = DirectoryTravel(path)
+    Mydict, count1 = DirectoryTravel(path)
 
     Count = 0
     Cnt = 0
@@ -115,16 +98,23 @@ def DeleteDuplicate(path):
 
     Result = list(filter(Check, Mydict.values()))
 
+    fobj = open("Log.txt", "w")
+
+    fobj.write("Deleted files are : " + "\n")
+
     for value in Result:
         for subvalue in value:
             Count += 1
             if(Count > 1):
                 Cnt += 1
-                ret, count1 = CreateFile(subvalue, Cnt, Count)
+                fobj.write(str(subvalue) + "\n")
                 os.remove(subvalue)
         Count = 0
 
-    SendMail("Marvellous/Log.txt", Cnt, count1)
+    fobj.write("Number of duplicate files which are delted are : " + str(Cnt) + "\n")
+    fobj.close()
+
+    SendMail("Log.txt", Cnt, count1)
 
 def main():
     border = "-" * 54
